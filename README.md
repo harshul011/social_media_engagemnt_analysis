@@ -52,21 +52,32 @@ Correlation heatmap
 here we can see the correlation between like , comment,share,reach and engagement rate
 
 
+
+
 Pie chart for sentiment-based engagement
 ![enagment rate based on emotion of post](https://github.com/user-attachments/assets/2439a384-023a-4536-b5b0-8e1ecbb64a62)
 
 shows the perfomance of post based on emotions
 
 
+
+
 enagagemnt rate based on gender and age
 ![engagemnt based on diffrent age and gneder](https://github.com/user-attachments/assets/4df51a6d-857b-40ec-9f15-64d53e7c21b4
+
+
 
 
 engagemnt rate across diffrent platforms
 ![engagemnt rate across dfrrent platforms](https://github.com/user-attachments/assets/80ca4d8c-4742-412f-93de-e7fcd8df0c2b)
 
+
+
 engagemnt based on post type
 ![engament based on post type](https://github.com/user-attachments/assets/a06b6b8f-cbd5-4e6a-871b-a9dfc42143bb)
+
+
+
 
 engagement rate of diffrent post accross diffrent platforms
 ![post and platform](https://github.com/user-attachments/assets/e48ae059-c1e9-4b69-bc2a-e2eaa08d2d92)
