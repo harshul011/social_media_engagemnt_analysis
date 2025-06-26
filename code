@@ -1,0 +1,69 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+df=pd.read_excel(r"C:\Users\DELL\Downloads\archive\social_media_engagement_data.xlsx")
+pd.set_option("display.width",None)
+print(df.head())
+print(df.info())
+df.drop(columns=["Influencer ID","Campaign ID"] , inplace=True)
+print(df.isna().sum())
+print("average perfomance for difrrent post based on their sentiments",df.groupby("Sentiment")["Engagement Rate"].mean())
+eng_rate_sentiment_based=df.groupby("Sentiment")["Engagement Rate"].mean()
+#plt.pie(eng_rate_sentiment_based,labels=eng_rate_sentiment_based.index)
+print("which platform performs the best ")
+platform=df.groupby("Platform")["Engagement Rate"].mean().reset_index()
+print(platform.sort_values(by ="Engagement Rate", ascending=False))
+x=platform["Platform"]
+y=platform["Engagement Rate"]
+plt.bar(x,y)
+plt.title("engagement rate across different platforms:")
+plt.show()
+
+content_type=df.groupby("Post Type")["Engagement Rate"].mean().reset_index()
+print("engagement rate based on post type-",content_type)
+'''plt.bar(content_type["Post Type"],content_type["Engagement Rate"])
+plt.title("engagement rate based on post type")
+plt.show()
+
+eng_rate_age_based=df.groupby("Audience Age")["Engagement Rate"].mean()
+eng_rate_gender_based = df.groupby("Audience Gender")["Engagement Rate"].mean()
+print(eng_rate_age_based)
+plt.subplot(1,2,1)
+plt.title("engagemnt  rate based on age :")
+plt.plot(eng_rate_age_based)
+
+print(eng_rate_gender_based)
+plt.subplot(1,2,2)
+plt.title("audience engagemnt rate based on gender ")
+plt.bar(eng_rate_gender_based.index,eng_rate_gender_based.values)
+plt.show()
+
+corr_values=df[["Likes", "Comments", "Shares", "Impressions", "Reach", "Engagement Rate"]].corr()
+print(corr_values)
+sns.heatmap(corr_values,annot=True)
+plt.title("correlation")
+plt.show()
+
+print("countries with best reach vs countries with best engagement rate ")
+plt.figure(figsize=(12,6))
+reach=df.groupby("Audience Location")["Engagement Rate"].mean().sort_values(ascending=False).head(5)
+eng_rate=df.groupby("Audience Location")["Reach"].mean().sort_values(ascending=False).head(5)
+print(reach.head(1))
+print(eng_rate.head(1))
+plt.subplot(1,2,1)
+plt.title("location & engagement rate ")
+plt.bar(eng_rate.index,eng_rate.values)
+
+plt.subplot(1,2,2)
+plt.title("location & reach")
+plt.bar(reach.index,reach.values)
+plt.show()
+
+post_platform= df.groupby(["Platform", "Post Type"])["Engagement Rate"].mean()
+post_platform.plot(kind="bar", figsize=(10,6))
+plt.title("Engagement Rate by Post Type and Platform")
+plt.xticks(rotation=45)
+plt.show()
+
+
